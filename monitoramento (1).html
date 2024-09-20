@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Enchentes</title>
+    <link rel="stylesheet" href="styles.css">
+<style type="text/css" id="dcoder_stylesheet">body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+#map-container {
+    height: 500px;
+    width: 100%;
+}
+</style></head>
+<body>
+    <header>
+        <h1>Monitoramento de Enchentes</h1>
+    </header>
+    <main>
+        <section id="info">
+            <h2>Informações Sobre Enchentes</h2>
+            <p id="status">Carregando dados...</p>
+        </section>
+        <section id="map">
+            <h2>Mapa de Enchentes</h2>
+            <div id="map-container"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=inicializarMapa" async defer></script>
+<script type="text/javascript" id="dcoder_script">// Função para obter e atualizar o status das enchentes
+function atualizarStatus() {
+    // Exemplo de URL para um serviço de dados de enchentes
+    const url = 'https://api.exemplo.com/enxurrada'; // Substitua com uma URL real
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // Suponha que o status venha como uma string
+            document.getElementById('status').textContent = data.status;
+        })
+        .catch(error => {
+            console.error('Erro ao buscar dados:', error);
+            document.getElementById('status').textContent = 'Erro ao carregar dados.';
+        });
+}
+
+// Função para inicializar o mapa
+function inicializarMapa() {
+    // Exemplo com o Google Maps API
+    const mapContainer = document.getElementById('map-container');
+    const map = new<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=inicializarMapa" async defer></script>
+
+        center: { lat: -23.5505, lng: -46.6333 }, // Exemplo: São Paulo
+        zoom: 12
+    });
+
+    // Adicionar marcadores ou outras funcionalidades
+}
+
+// Inicializar a página
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarStatus();
+    inicializarMapa();
+});
+</script></body></html>
